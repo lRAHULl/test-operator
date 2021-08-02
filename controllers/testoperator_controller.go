@@ -50,7 +50,7 @@ func (r *TestOperatorReconciler) Reconcile(ctx context.Context, req ctrl.Request
 
 	// your logic here
 	var testop k8sv1alpha1.TestOperator
-	err := r.Get(ctx, req.NamespacedName, &testop); 
+	err := r.Get(ctx, req.NamespacedName, &testop)
 	if err != nil {
 		fmt.Println(err.Error())
 		return ctrl.Result{}, client.IgnoreNotFound(err)
@@ -63,8 +63,8 @@ func (r *TestOperatorReconciler) Reconcile(ctx context.Context, req ctrl.Request
 	pod.Namespace = testop.Namespace
 	pod.Spec.Containers = []corev1.Container{
 		{
-			Name: testop.Name,
-			Image: testop.Spec.Image,
+			Name:      testop.Name,
+			Image:     testop.Spec.Image,
 			Resources: *testop.Spec.Resources.DeepCopy(),
 		},
 	}

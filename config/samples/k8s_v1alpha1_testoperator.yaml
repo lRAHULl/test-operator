@@ -1,0 +1,10 @@
+apiVersion: k8s.rahulp.tech/v1alpha1
+kind: TestOperator
+metadata:
+  name: testoperator-sample
+spec:
+  image: nginx
+  resources:
+    limits:
+      memory: 50Mi
+      cpu: 1
